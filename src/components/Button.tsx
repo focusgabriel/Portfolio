@@ -61,7 +61,7 @@ const Button = ({
 
   return (
     <Link
-      to={link}
+      to={link || "#"}
       className={`flex w-full md:w-auto items-center justify-center rounded-[6px] py-2 px-4 md:px-5 text-[15px] md:text-[16px] text-center text-white gap-2 md:gap-3 cursor-pointer no-underline mt-4 md:mt-1 ${bgClasses} ${borderClasses}`}
     >
       <>
