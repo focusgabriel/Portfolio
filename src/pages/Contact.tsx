@@ -13,20 +13,11 @@ import { useRef, useState } from "react";
 import { Mailer } from "../components/MessageTemplate";
 import { Link } from "react-router-dom";
 import Footer from "../components/Footer";
-import DOMPurify from "dompurify";
-
-// interface formProps {
-//   name: string;
-//   email: string;
-//   collaborate: string;
-//   message: string;
-// }
 
 const Contact = () => {
-  // const window = new JSDOM('').window;
   const Name = useRef<HTMLInputElement>(null);
   const Email = useRef<HTMLInputElement>(null);
-  const Collaborate = useRef<HTMLInputElement>(null);
+  const Header = useRef<HTMLInputElement>(null);
   const textMessage = useRef<HTMLTextAreaElement>(null);
   const [submitStatus, setSubmitStatus] = useState<{
     type: "success" | "error";
@@ -37,10 +28,10 @@ const Contact = () => {
   const handleSubmit = async (e: React.SubmitEvent) => {
     e.preventDefault();
 
-    const newDetails: any = {
+    const newDetails = {
       name: Name.current?.value,
       email: Email.current?.value,
-      collaborate: Collaborate.current?.value,
+      header: Header.current?.value,
       message: textMessage.current?.value,
     };
 
@@ -55,14 +46,13 @@ const Contact = () => {
     setIsSubmitting(true);
     setSubmitStatus(null);
 
-    DOMPurify.sanitize(newDetails);
     try {
       console.log("message gotten successfully", newDetails);
       await Mailer(
         newDetails.name,
         newDetails.email,
-        import.meta.env.VITE_CONTACT_EMAIL,
-        newDetails.collaborate || "Portfolio Contact",
+        "charlesuchendu750@gmail.com" ,
+        newDetails.header || "Portfolio Contact",
         newDetails.message,
       );
 
@@ -74,7 +64,7 @@ const Contact = () => {
 
       Name.current!.value = "";
       Email.current!.value = "";
-      Collaborate.current!.value = "";
+      Header.current!.value = "";
       textMessage.current!.value = "";
     } catch (error) {
       console.error("Failed to send message:", error);
@@ -88,20 +78,20 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="h-auto bg-[#0b1324] px-5 py-6 text-white">
+    <section id="contact" className="h-auto bg-[#0b1324] lg:px-5 lg:py-6 text-white">
       <div className="text-center mb-[2rem]">
-        <h3 className="text-[#8f82da] font-semibold text-[14px] mt-12 md:mt-[6rem] mb-[2rem]">
+        <h3 className="text-[rgb(143,130,218)] font-semibold text-[14px]  lg:mt-[4rem]] pt-[3rem] pb-[2.5rem]">
           GET IN TOUCH
         </h3>
-        <h2 className="text-[32px] md:text-[40px] font-semibold">Contact Me</h2>
-        <p className="text-slate-400 text-[16px] mb-10 md:mb-[4rem]">
+        <h2 className="lg:text-[40px] text-[28px] font-semibold">Contact Me</h2>
+        <p className="text-slate-400 text-[16px] mb-[4rem]" >
           Open to new Opportunities, Collaboration, and interesting <br></br>{" "}
           projects. Let's build something great together{" "}
         </p>
       </div>
-      <div className="mx-auto w-full max-w-5xl px-4 sm:px-6 grid grid-cols-1 gap-8 lg:grid-cols-[1.04fr_0.96fr]">
+      <div className="md:mx-auto w-full max-w-5xl px-4 sm:px-6 grid grid-cols-1 gap-8 lg:grid-cols-[1.04fr_0.96fr]">
         {/* ================= LEFT: CONTACT FORM ================= */}
-        <div className="rounded-[19px] border border-[#202d42] bg-[#101827] p-7 sm:p-8">
+        <div className="lg:rounded-lg md:border md:border-[#202d42] md:bg-[#0f172a] md:p-6 md:shadow-sm">
           {/* Heading */}
           <div className="mb-7">
             <h2 className="text-xl font-bold text-[#f4f6ff]">Send a Message</h2>
@@ -111,10 +101,10 @@ const Contact = () => {
             </p>
           </div>
 
-          <form className="space-y-0" onSubmit={handleSubmit}>
+          <form className="space-y-4" onSubmit={handleSubmit}>
             {submitStatus && (
               <div
-                className={`mb-4 rounded-[10px] border px-4 py-3 text-sm ${
+                className={`mb-4 rounded-md border px-4 py-3 text-sm ${
                   submitStatus.type === "success"
                     ? "border-green-500/30 bg-green-500/10 text-green-300"
                     : "border-red-500/30 bg-red-500/10 text-red-300"
@@ -125,9 +115,9 @@ const Contact = () => {
             )}
 
             {/* Name + Email */}
-            <div className="grid grid-cols-1 gap-0 sm:grid-cols-2 sm:gap-3.5">
+            <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4">
               {/* Name */}
-              <div className="mb-[19px]">
+              <div>
                 <label className="mb-2 block text-sm font-semibold text-[#9cb0d0]">
                   Name <span className="text-[#ff5264]">*</span>
                 </label>
@@ -137,11 +127,11 @@ const Contact = () => {
                   placeholder="John Doe"
                   ref={Name}
                   className="
-                    h-[53px] w-full rounded-[11px]
+                    h-12 w-full rounded-md
                     border border-[#223149]
                     bg-[#0e1729]
-                    px-[17px]
-                    text-[16px] text-[#e8edfa]
+                    px-4
+                    text-[15px] text-[#e8edfa]
                     outline-none
                     placeholder:text-[#647b9e]
                     focus:border-[#7d8cf4]
@@ -152,7 +142,7 @@ const Contact = () => {
               </div>
 
               {/* Email */}
-              <div className="mb-[19px]">
+              <div>
                 <label className="mb-2 block text-sm font-semibold text-[#9cb0d0]">
                   Email <span className="text-[#ff5264]">*</span>
                 </label>
@@ -162,11 +152,11 @@ const Contact = () => {
                   placeholder="you@example.com"
                   ref={Email}
                   className="
-                    h-[53px] w-full rounded-[11px]
+                    h-12 w-full rounded-md
                     border border-[#223149]
                     bg-[#0e1729]
-                    px-[17px]
-                    text-[16px] text-[#e8edfa]
+                    px-4
+                    text-[15px] text-[#e8edfa]
                     outline-none
                     placeholder:text-[#647b9e]
                     focus:border-[#7d8cf4]
@@ -178,7 +168,7 @@ const Contact = () => {
             </div>
 
             {/* Subject */}
-            <div className="mb-[19px]">
+            <div>
               <label className="mb-2 block text-sm font-semibold text-[#9cb0d0]">
                 Subject
               </label>
@@ -186,13 +176,13 @@ const Contact = () => {
               <input
                 type="text"
                 placeholder="Project opportunity, collaboration..."
-                ref={Collaborate}
+                ref={Header}
                 className="
-                  h-[53px] w-full rounded-[11px]
+                  h-12 w-full rounded-md
                   border border-[#223149]
                   bg-[#0e1729]
-                  px-[17px] py-[15px]
-                  text-[16px] leading-6 text-[#e8edfa]
+                  px-4 py-3
+                  text-[15px] leading-6 text-[#e8edfa]
                   outline-none
                   placeholder:text-[#647b9e]
                   focus:border-[#7d8cf4]
@@ -203,7 +193,7 @@ const Contact = () => {
             </div>
 
             {/* Message */}
-            <div className="mb-6">
+            <div>
               <label className="mb-2 block text-sm font-semibold text-[#9cb0d0]">
                 Message <span className="text-[#ff5264]">*</span>
               </label>
@@ -212,18 +202,7 @@ const Contact = () => {
                 rows={6}
                 placeholder="Tell me about the project, role, or idea..."
                 ref={textMessage}
-                className="
-                  min-h-[153px] w-full resize-y rounded-[11px]
-                  border border-[#223149]
-                  bg-[#0e1729]
-                  px-[17px] py-[15px]
-                  text-[16px] leading-6 text-[#e8edfa]
-                  outline-none
-                  placeholder:text-[#647b9e]
-                  focus:border-[#7d8cf4]
-                  focus:ring-2
-                  focus:ring-[#7d8cf4]/10
-                "
+                className="min-h-[140px] w-full resize-y rounded-md border border-[#223149] bg-[#0e1729] px-4 py-3 text-[15px] leading-6 text-[#e8edfa] outline-none placeholder:text-[#647b9e] focus:border-[#7d8cf4] focus:ring-2 focus:ring-[#7d8cf4]/10"
               />
             </div>
 

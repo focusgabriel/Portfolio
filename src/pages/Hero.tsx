@@ -83,7 +83,7 @@ export default function Hero() {
             </a>
           </div>
 
-          <div className="flex mt-[2rem] mb-[1rem] align-middle justify-start">
+          <div className="flex mt-[2rem] align-middle justify-start">
             <p className="text-[13px] text-slate-400 font-semibold">
               Find me on
             </p>
@@ -100,7 +100,7 @@ export default function Hero() {
           </div>
         </div>
 
-        <div className="hidden md:flex md:w-5/12 justify-center md:justify-end">
+        <div className="hidden md:flex md:w-5/12 justify-center items-center mt-[30vh] md:justify-end">
           <div className="hero-orb relative mx-auto h-40 w-40 md:h-52 md:w-[200px] rounded-full">
             <div className="hero-core absolute top-3 left-3 md:top-[10px] md:left-[10px] h-[120px] w-[120px] md:h-[180px] md:w-[180px] rounded-full" />
             <p className="hero-ccu absolute top-[50%] left-[50%] -translate-x-1/2 -translate-y-1/2 text-[24px] md:text-[34px] font-bold tracking-[2px] text-center">

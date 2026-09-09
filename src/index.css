@@ -94,11 +94,19 @@ html{
   }
 
   .page-container {
+    width: 100%;
     max-width: 1200px;
     margin: 0 auto;
     margin-bottom: 2rem;
-    padding-left: 2rem;
-    padding-right: 2rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  @media (min-width: 768px) {
+    .page-container {
+      padding-left: 2rem;
+      padding-right: 2rem;
+    }
   }
 }
 
@@ -335,7 +343,7 @@ html{
  } */
 
 /* ---- Rubik-style CCU cube for Navbar ---- */
-.rubik {
+/* .rubik {
   width: 40px;
   height: 40px;
   perspective: 700px;
@@ -351,6 +359,13 @@ html{
 }
 .cube:hover {
   animation-play-state: paused;
+}
+
+/* Static cube variant (no rotation) used for navbar */
+/* .cube-static {
+  animation: none !important;
+  transform-style: preserve-3d;
+  transform: rotateX(18deg) rotateY(25deg) translateZ(0);
 }
 .face {
   position: absolute;
@@ -407,4 +422,4 @@ html{
   100% {
     transform: rotateX(360deg) rotateY(360deg);
   }
-}
+} */

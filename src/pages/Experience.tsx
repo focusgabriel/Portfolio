@@ -30,7 +30,7 @@ const experienceData = [
 
 const Experience = () => {
   return (
-    <section id="experience" className="bg-[#0f172a] w-full py-[5rem] scroll-mt-24">
+    <section id="experience" className="bg-[#0f172a] w-full pt-[2.5rem] lg:pb-[2rem] scroll-mt-24">
       <div className="page-container">
         <div className="text-center mb-[4rem]">
           <h3 className="font-bold text-[#8f82da] text-[14px] tracking-[3px]">

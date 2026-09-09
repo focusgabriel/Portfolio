@@ -1,16 +1,22 @@
-interface skillProps{
-  icon: string,
-  alt: string,
-  content: string
+/** @format */
+
+interface skillProps {
+  icon: string;
+  alt: string;
+  content: string;
 }
 
-const SkillsCard = ({icon, alt, content}: skillProps) => {
+const SkillsCard = ({ icon, alt, content }: skillProps) => {
   return (
-    <div className="w-[90px] h-[120px] rounded-xl border-2 border-[#042c4f] hover:shadow-[0_0_20px_#042c4f] hover:scale-90 relative lg:hover:scale-125 lg:transition">
-      <img src={icon} alt={alt} width={30} height={30} className="mx-auto my-4 block" />
-      <p className="absolute bottom-2 w-[90%] mx-auto text-center">{content}</p>
+    <div className="w-24 sm:w-28 md:w-36 lg:w-24 h-30 rounded-xl border-2 border-[#042c4f] hover:shadow-lg hover:scale-105 transition-transform duration-200 flex flex-col items-center justify-center p-2 bg-transparent">
+      <img
+        src={icon}
+        alt={alt}
+        className="w-8 h-8 sm:w-10 sm:h-10 block mb-3"
+      />
+      <p className="text-center text-sm text-slate-200 w-full">{content}</p>
     </div>
-  )
-}
+  );
+};
 
-export default SkillsCard
+export default SkillsCard;
