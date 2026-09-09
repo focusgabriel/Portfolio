@@ -13,7 +13,7 @@ const Footer = () => {
         </div>
 
         <div>
-          <ul className="flex flex-wrap items-center justify-center md:justify-end gap-3">
+          <ul className="flex flex-wrap items-center justify-center md:justify-end">
             {navItems.map(({ title, href }) => (
               <li key={title} className="">
                 <a
