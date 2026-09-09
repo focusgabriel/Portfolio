@@ -1,44 +1,9 @@
 /** @format */
 
-// import nodemailer from "nodemailer"
-import apiInstance from "../config/brevo";
+const API_KEY = import.meta.env.VITE_API_KEY;
+const BREVO_API_URL = "https://api.brevo.com/v3/smtp/email";
 
-
-// let transporter = nodemailer.createTransport({
-//   service: "gmail",
-//   auth: {
-//     // user: process.env.SMTP_USER,
-//     // pass: process.env.SMTP_PASS,
-
-//     user: "charlesuchendu750@gmail.com",
-//     pass: "hmjjqezuergofswv"
-//   },
-// });
-
-// export const sendMailer = (sender: string, subject: string, text: string) => {
-//   try {
-//       let mailOptions = {
-//       from: sender,
-//       to: "charlesuchendu750@gmail.com",
-//       subject: subject,
-//       text: text
-//     }
-
-//     transporter.sendMail(mailOptions, function (error:unknown, info:any) {
-//     if (error ) {
-//       console.log(error);
-//     } else {
-//       console.log("Email sent: " + info.response);
-//     }
-//   });
-//   } catch (error) {
-//     console.error("error occurred")
-//     console.error(error)
-//   }
-
-// }
-
-export const Mailer = async(
+export const Mailer = async (
   name: string,
   email: string,
   recipientEmail: string,
@@ -46,25 +11,42 @@ export const Mailer = async(
   text: string,
 ) => {
   try {
-    const verifiedSenderEmail =
-      import.meta.env.VITE_BREVO_SENDER_EMAIL || "charlesuchendu750@gmail.com";
+    console.log("Sending email with:", { name, email, recipientEmail, header, text });
 
-    await apiInstance.sendTransacEmail({
-      sender: {
-        name: "Portfolio Contact",
-        email: verifiedSenderEmail,
+    const response = await fetch(BREVO_API_URL, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "api-key": API_KEY,
       },
-      to: [{ email: recipientEmail }],
-      replyTo: {
-        name: name,
-        email: email,
-      },
-      subject: header,
-      htmlContent: `
-        <p><strong>From:</strong> ${name} (${email})</p>
-        <p>${text}</p>
-      `,
+      body: JSON.stringify({
+        sender: {
+          name: "Portfolio Contact",
+          email: "charlesuchendu750@gmail.com",
+        },
+        to: [
+          {
+            email: recipientEmail,
+            name: recipientEmail,
+          },
+        ],
+        replyTo: {
+          email: email,
+          name: name,
+        },
+        subject: header || "Portfolio contact",
+        htmlContent: `<p><strong>From:</strong> ${name} (${email})</p>\n<p>${text}</p>`,
+      }),
     });
+
+    const data = await response.json();
+    console.log("Brevo response:", data);
+
+    if (!response.ok) {
+      throw new Error(`Brevo API error: ${response.status} ${JSON.stringify(data)}`);
+    }
+
+    return data;
   } catch (error) {
     console.error("Error sending email:", error);
     throw error;
