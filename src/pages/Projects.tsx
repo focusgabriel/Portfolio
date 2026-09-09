@@ -48,7 +48,7 @@ const Projects = () => {
             to="https://github.com/focusgabriel"
             className="text-[#6a4fff] text-center inline font-semibold text-[16px]"
           >
-            <p className="inline hover:underline">
+            <p className="inline hover:underline mb-[5rem]">
               View all repositories on GitHub
             </p>{" "}
             <ArrowRight size={16} color="royalBlue" className="inline" />{" "}
