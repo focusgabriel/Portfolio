@@ -1,5 +1,4 @@
 /** @format */
-import type React from "react";
 
 interface experienceProps {
   role: string;
