@@ -14,18 +14,24 @@ interface projectsProps {
 
 const ProjectsCard2 = ({ mainTitle, label, title, content }: projectsProps) => {
   return (
-    <div className="w-full md:w-[350px] min-h-[420px] border rounded-2xl relative border-slate-400 hover:border-orange-500 hover:not-first:shadow-[0_0_12px_rgba(251,146,60,0.35)] flex flex-col">
-      <div className="w-full h-[30vh] bg-gradient-to-b from-[#0f172a] to-black noBorder flex justify-center items-center rounded-2xl shrink-0">
+    <div className="w-full md:w-80 lg:w-[350px] min-h-[420px] border rounded-2xl relative border-slate-400 hover:border-orange-500 hover:shadow-[0_0_12px_rgba(251,146,60,0.12)] flex flex-col">
+      <div className="w-full h-[26vh] md:h-[30vh] bg-gradient-to-b from-[#0f172a] to-black noBorder flex justify-center items-center rounded-2xl shrink-0">
         <h2 className="text-center text-[#FF8C00] text-[18px]">{mainTitle}</h2>
       </div>
 
       <div className="px-[18px] py-[12px] flex flex-col flex-1">
-        <p className="border border-[#FF8C00] text-orange-300 bg-orange-500/10 text-center uppercase p-[2px] w-[100px] text-[12px] rounded-[5px] my-[10px]">{label}</p>
-        <h3 className="font-medium capitalize my-[10px] text-slate-200">{title}</h3>
-        <p className="text-slate-400 text-[14px] leading-[150%] my-[10px]">{content}</p>
+        <p className="border border-[#FF8C00] text-orange-300 bg-orange-500/10 text-center uppercase p-[2px] w-[100px] text-[12px] rounded-[5px] my-[10px]">
+          {label}
+        </p>
+        <h3 className="font-medium capitalize my-[10px] text-slate-200">
+          {title}
+        </h3>
+        <p className="text-slate-400 text-[14px] leading-[150%] my-[10px]">
+          {content}
+        </p>
 
-        <div className="labelCards">
-          <ul className="flex flex-wrap items-center gap-[10px]">
+        <div className="labelCards mt-2">
+          <ul className="flex flex-wrap items-center gap-2">
             {movie.map(item => (
               <li key={item.techName} className="inline-block">
                 <LabelCards key={item.techName} content={item.techName} />
@@ -33,8 +39,7 @@ const ProjectsCard2 = ({ mainTitle, label, title, content }: projectsProps) => {
             ))}
           </ul>
         </div>
-
-        <div className="flex justify-around items-center w-[90%] gap-[10px] mt-auto pt-4">
+        <div className="flex flex-col sm:flex-row justify-between items-center gap-3 mt-auto pt-4 w-full">
           <Button
             icon={SquarePen}
             iconColor="orange"
@@ -42,7 +47,6 @@ const ProjectsCard2 = ({ mainTitle, label, title, content }: projectsProps) => {
             link="https://github.com/focusgabriel/Expense_Tracker.git"
             bordered="orange"
             textColor="orange"
-
           />
           <Button
             icon={CirclePlay}
