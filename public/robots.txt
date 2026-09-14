@@ -3,4 +3,4 @@ Allow: /
 Disallow: /admin
 Disallow: /api
 Disallow: /*.json$
-Sitemap: https://yourportfolio.com/sitemap.xml
+Sitemap: https://charles-uchendu-portfolio.vercel.app/sitemap.xml

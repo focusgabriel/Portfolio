@@ -44,7 +44,7 @@ export default function Skills() {
           </div>
           <div className="flex-1 min-w-[120px] max-w-[300px] h-[88px] border border-[#042c4f] text-center flex flex-col items-center justify-center">
             <h4 className="text-[#818cf8] text-2xl md:text-4xl font-bold">3</h4>
-            <h2 className="text-[12px] mt-1">Projects Shipped</h2>
+            <h2 className="text-[12px] mt-1">Projects Experience</h2>
           </div>
           <div className="flex-1 min-w-[120px] max-w-[300px] h-[88px] border border-[#042c4f] text-center rounded-r-lg flex flex-col items-center justify-center">
             <h4 className="text-[#818cf8] text-2xl md:text-4xl font-bold">
