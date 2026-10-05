@@ -47,7 +47,7 @@ export const skills = [
   { icon: "/icons/html.svg", alt: "html", name: "HTML5" },
   { icon: "/icons/css.svg", alt: "css", name: "CSS" },
   { icon: "/icons/supabase.jpg", alt: "supabase", name: "Supabase" },
-  { icon: "/icons/postgres.png", alt: "postgres", name: "Postgres" },
+  // { icon: "/icons/postgres.png", alt: "postgres", name: "Postgres" },
 ];
 
 export const experienceStacks = [

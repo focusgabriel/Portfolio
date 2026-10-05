@@ -44,14 +44,14 @@ const ProjectsCard2 = ({ mainTitle, label, title, content }: projectsProps) => {
             icon={SquarePen}
             iconColor="orange"
             content="GitHub"
-            link="https://github.com/focusgabriel/Expense_Tracker.git"
+            link="https://github.com/focusgabriel/Movie_Archiver.git"
             bordered="orange"
             textColor="orange"
           />
           <Button
             icon={CirclePlay}
             content="Live Demo"
-            link="https://trackiu.vercel.app"
+            link="https://moviesarchiver.vercel.app"
             filled="orange"
             iconColor="white"
             textColor="white"
